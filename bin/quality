@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+set -e
+
+bin/rubocop --display-style-guide
+bin/brakeman --quiet --skip-libs --no-pager --exit-on-warn
+
+bin/scss-lint
+bin/slim-lint app/views
+
+bin/bundle-audit update
+bin/bundle-audit
