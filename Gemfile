@@ -15,11 +15,14 @@ gem "meta-tags"
 gem "simple_form"
 gem "slim"
 
+gem "active_link_to"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
 gem "draper"
+gem "faker"
+gem "kaminari"
 gem "pundit"
 gem "responders"
 gem "seedbank"
@@ -32,7 +35,6 @@ group :development, :test do
   gem "byebug"
   gem "dotenv-rails"
   gem "factory_bot_rails"
-  gem "faker"
   gem "pry-rails"
   gem "rspec-rails"
   gem "rubocop", require: false

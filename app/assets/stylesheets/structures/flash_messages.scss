@@ -1,0 +1,11 @@
+.alert {
+  margin: 0 0 20px;
+
+  &.alert--alert {
+    color: map-get($map: $foundation-palette, $key: "alert");
+  }
+
+  &.alert--notice {
+    color: map-get($map: $foundation-palette, $key: "primary");
+  }
+}

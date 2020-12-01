@@ -8,7 +8,11 @@ html lang="en"
     = display_meta_tags site: "StripeTest"
     = csrf_meta_tags
   body
+    = render "layouts/header"
 
-    = yield
+    .grid-container.base-container
+      = render "layouts/flash_messages"
+      = yield
 
+    = javascript_pack_tag "application"
     = javascript_include_tag "application"

@@ -1,0 +1,15 @@
+.input {
+  margin: 0 auto 15px;
+
+  input {
+    margin: 0 auto 5px;
+  }
+
+  .input-hint {
+    margin: 5px 0 0;
+  }
+
+  .error {
+    color: map-get($map: $foundation-palette, $key: "alert");
+  }
+}

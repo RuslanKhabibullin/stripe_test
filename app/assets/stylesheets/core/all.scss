@@ -1,2 +1,16 @@
 @import "settings";
 @import "foundation_and_overrides";
+@import "variables";
+
+.base-container {
+  margin: 30px auto 0;
+}
+
+.active {
+  color: map-get($map: $foundation-palette, $key: "secondary");
+  cursor: not-allowed;
+}
+
+.pagination-block {
+  margin: 25px 0;
+}

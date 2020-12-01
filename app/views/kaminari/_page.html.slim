@@ -1,0 +1,6 @@
+li class="#{page.current? ? "current" : ""}"
+  - if page.current?
+    span.show-for-sr
+    = page
+  - else
+    == link_to_unless page.current?, page, url, { remote: remote }
