@@ -16,16 +16,21 @@ gem "simple_form"
 gem "slim"
 
 gem "active_link_to"
+gem "acts_as_paranoid", "~> 0.7.0"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
 gem "draper"
 gem "faker"
+gem "interactor", "~> 3.0"
 gem "kaminari"
 gem "pundit"
 gem "responders"
 gem "seedbank"
+gem "state_machines-activerecord"
+gem "stripe"
+gem "stripe_event"
 
 group :development, :test do
   gem "awesome_print"

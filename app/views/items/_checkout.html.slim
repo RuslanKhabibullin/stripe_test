@@ -1,0 +1,8 @@
+- if user_signed_in? && current_user.already_bought?(item)
+  .callout.success
+    p Already bought
+- elsif user_signed_in?
+  #item-checkout[checkout-data="#{item.purchase_json_data}"]
+- else
+  .callout.warning
+    p Please sign in first for checkout

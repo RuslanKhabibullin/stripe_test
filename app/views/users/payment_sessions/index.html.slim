@@ -1,0 +1,12 @@
+h2 = title "My payment attempts"
+
+table.payment-sessions-table
+  thead
+    tr
+      th Payment id
+      th Item
+      th Created at
+      th State
+  tbody
+    = render payment_sessions
+= paginate payment_sessions

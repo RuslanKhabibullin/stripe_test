@@ -1,6 +1,6 @@
 .item-card {
   display: block;
-  height: 210px;
+  min-height: 250px;
   margin: 10px 0;
   padding: 10px 15px;
   border: 0;
@@ -10,4 +10,17 @@
 
 .item-link {
   color: $default-text-color;
+}
+
+.item-checkout {
+  display: block;
+  min-width: 400px;
+  height: 43px;
+  margin: 25px auto 5px;
+
+  &__button {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+  }
 }

@@ -1,0 +1,4 @@
+en:
+  time:
+    formats:
+      time_with_zone: "%d-%m-%Y %H:%M (%Z)"

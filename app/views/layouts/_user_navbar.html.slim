@@ -3,6 +3,8 @@ ul[class="dropdown menu" data-dropdown-menu]
     a href="#" = current_user.full_name
     ul.menu.vertical
       li
+        = active_link_to "My items", user_items_path(current_user)
+        = active_link_to "My payment attempts", user_payment_sessions_path(current_user)
         = active_link_to "Edit profile", edit_user_registration_path
       li
         = link_to "Log out", destroy_user_session_path, method: :delete

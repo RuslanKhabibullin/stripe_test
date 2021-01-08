@@ -1,0 +1,5 @@
+tr
+  td = payment_session.id
+  td = link_to(payment_session.item_title, item_path(id: payment_session.item_id))
+  td = payment_session.formatted_creation_time
+  td = payment_session.state_with_proper_color

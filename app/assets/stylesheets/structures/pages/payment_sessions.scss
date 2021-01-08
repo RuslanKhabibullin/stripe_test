@@ -1,0 +1,19 @@
+.payment-sessions-table {
+  margin: 20px 0;
+
+  .payment-fulfilled {
+    color: map-get($map: $foundation-palette, $key: "success");
+  }
+
+  .payment-created {
+    color: map-get($map: $foundation-palette, $key: "secondary");
+  }
+
+  .payment-paid {
+    color: map-get($map: $foundation-palette, $key: "primary");
+  }
+
+  .payment-failed {
+    color: map-get($map: $foundation-palette, $key: "warning");
+  }
+}
