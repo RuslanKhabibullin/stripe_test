@@ -1,24 +1,41 @@
-# README
+# Stripe pet project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pet project with a charge through Stripe system.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+How to run tests:
 
-* System dependencies
+```
+bin/rspec spec
+```
 
-* Configuration
+How to run development console:
 
-* Database creation
+```
+bin/rails c
+```
 
-* Database initialization
+How to run server:
 
-* How to run the test suite
+```
+bin/server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+How to run quality checks:
 
-* Deployment instructions
+```
+bin/quality
+```
 
-* ...
+Setup script:
+
+```
+bin/setup
+```
+
+Stripe local development setup (webhooks):
+
+```
+stripe listen --forward-to localhost:5000/stripe/webhook
+```
