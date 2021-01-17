@@ -63,6 +63,7 @@ group :test do
   gem "capybara", ">= 2.15"
   gem "database_cleaner"
   gem "formulaic"
+  gem "mini_racer", platforms: :ruby
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "timecop"
