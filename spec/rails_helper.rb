@@ -8,7 +8,10 @@ require "webmock/rspec"
 
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
 
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(
+  allow_localhost: true,
+  allow: "chromedriver.storage.googleapis.com"
+)
 
 # include after files require
 # rubocop:disable Style/MixinUsage

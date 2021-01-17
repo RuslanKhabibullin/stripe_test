@@ -31,7 +31,7 @@ describe Payment::PrepareCheckoutStripeData do
         }
       ],
       metadata: {
-        purchase_time: "16-01-2021 21:00 (UTC)"
+        purchase_time: "17-01-2021 14:00 (UTC)"
       }
     }
   end
