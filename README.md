@@ -4,6 +4,8 @@
 
 Pet project with a charge through Stripe system.
 
+Heroku url: https://stripe-pet-project.herokuapp.com/
+
 ## Setup
 
 How to run tests:
