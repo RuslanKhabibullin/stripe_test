@@ -123,3 +123,12 @@ Metrics/BlockLength:
 
 RSpec/Capybara/FeatureMethods:
   Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: false

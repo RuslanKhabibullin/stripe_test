@@ -48,15 +48,15 @@ module Payment
     end
 
     def success_url
-      item_payment_success_url(
-        default_url_options.merge(item_id: item.id)
-      )
+      item_payment_success_url(url_options.merge(item_id: item.id))
     end
 
     def cancel_url
-      item_url(
-        default_url_options.merge(id: item.id)
-      )
+      item_url(url_options.merge(id: item.id))
+    end
+
+    def url_options
+      default_url_options || {}
     end
 
     def purchase_time

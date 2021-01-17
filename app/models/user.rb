@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
-  # No need to destroy associations because of atcs_as_paranoid (soft delete)
+  # No need to destroy associations because of acts_as_paranoid (soft delete)
   # rubocop:disable Rails/HasManyOrHasOneDependent
   has_many :payment_sessions
   has_many :fulfilled_payments, -> { fulfilled },

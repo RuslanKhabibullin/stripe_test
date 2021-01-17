@@ -1,4 +1,4 @@
-tr
+tr id="payment_session_row_#{payment_session.id}"
   td = payment_session.id
   td = link_to(payment_session.item_title, item_path(id: payment_session.item_id))
   td = payment_session.formatted_creation_time
