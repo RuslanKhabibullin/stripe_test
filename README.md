@@ -1,3 +1,5 @@
+[![Codeship Status for RuslanKhabibullin/stripe_test](https://app.codeship.com/projects/29a94b77-daf8-40f0-aff4-ac486ab9b2c8/status?branch=master)](https://app.codeship.com/projects/424195)
+
 # Stripe pet project
 
 Pet project with a charge through Stripe system.
