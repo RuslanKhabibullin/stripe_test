@@ -9,7 +9,7 @@ blocks:
   - name: Deploy
     task:
       secrets:
-        - name: stripetest-heroku
+        - name: personal-semaphore
 
       env_vars:
         - name: HEROKU_REMOTE
