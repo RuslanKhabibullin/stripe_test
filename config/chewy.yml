@@ -1,0 +1,10 @@
+# config/chewy.yml
+# separate environment configs
+development: &development
+  host: "localhost:9200"
+  prefix: stripe_test_development
+test:
+  <<: *development
+  prefix: stripe_test_test
+production:
+  host: <%= ENV["BONSAI_URL"] %>

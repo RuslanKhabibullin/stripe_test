@@ -14,6 +14,7 @@ gem "foundation-rails"
 gem "meta-tags"
 gem "simple_form"
 gem "slim"
+gem "chewy", "~> 7.0.0"
 
 gem "active_link_to"
 gem "acts_as_paranoid", "~> 0.7.0"
@@ -31,6 +32,7 @@ gem "seedbank"
 gem "state_machines-activerecord"
 gem "stripe"
 gem "stripe_event"
+gem "sidekiq"
 
 group :development, :test do
   gem "awesome_print"
