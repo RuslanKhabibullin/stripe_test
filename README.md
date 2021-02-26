@@ -58,3 +58,36 @@ Install project dependencies:
 
 - Run `docker-compose run --rm web bundle install -j4 --retry 3` - install gems
 - Run `docker-compose run --rm web yarn install` - install node modules
+
+Run Stripe:
+- run stripe `docker-compose run stripe listen --api-key sk_test_1 --forward-to localhost:3000/stripe/webhook`
+- then set received env variable and run other containers:
+
+```
+export STRIPE_SIGNING_SECRET=whsec_...
+export STRIPE_API_KEY=sk_test_...
+export STRIPE_PUBLIC_KEY=pk_test_...
+docker-compose up -d
+```
+
+Now Stripe payments forwarded to local machine.
+
+How to run specs:
+
+```
+docker-compose run -e RAILS_ENV=test web bin/rspec
+```
+
+## Populate Elastic index
+
+```
+bin/rails c
+ItemsIndex.reset!
+```
+
+or using Docker:
+
+```
+docker-compose exec web bin/rails c
+ItemsIndex.reset!
+```
