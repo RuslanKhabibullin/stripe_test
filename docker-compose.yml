@@ -1,0 +1,115 @@
+version: "3.4"
+
+services:
+  db:
+    image: postgres:13.2-alpine
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2.0
+    ports:
+      - 6379:6379
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    volumes:
+      - elastic_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+
+  # can be run manually when needed by the next command:
+  # docker-compose run stripe listen --api-key sk_test_1 --forward-to localhost:3000/stripe/webhook
+  # then response can be used as STRIPE_SIGNING_SECRET env var
+  # network_mode issue = https://github.com/stripe/stripe-cli/issues/427
+  stripe:
+    image: stripe/stripe-cli
+    network_mode: host
+
+  # for selenium capybara feature specs
+  chrome:
+    image: selenium/standalone-chrome-debug:3.141.59
+    ports:
+      - 4444:4444
+      - 5900:5900
+
+  app: &app
+    image: stripe_test:1.0.0
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      args:
+        - PG_MAJOR=13
+        - NODE_MAJOR=12
+        - YARN_VERSION=1.22.5
+
+  backend: &backend
+    <<: *app
+    environment:
+      - RAILS_ENV=${RAILS_ENV:-development}
+      - NODE_ENV=${NODE_ENV:-development}
+      - STRIPE_PUBLIC_KEY=${STRIPE_PUBLIC_KEY:-test}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      - ELASTICSEARCH_URL=${ELASTICSEARCH_URL:-http://elasticsearch:9200}
+      - DATABASE_URL=${DATABASE_URL:-postgres://postgres:password@db:5432}
+      - DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL=${DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL:-true}
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
+      - STRIPE_API_KEY=${STRIPE_API_KEY:-test}
+      - STRIPE_SIGNING_SECRET=${STRIPE_SIGNING_SECRET:-test}
+      - HUB_URL=http://chrome:4444/wd/hub
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+      - chrome
+    volumes:
+      - .:/app:cached
+      - ruby_bundle:/usr/local/bundle
+      - rails_cache:/app/tmp/cache
+      - node_modules:/app/node_modules
+      - packs:/app/public/packs
+
+  web:
+    <<: *backend
+    command: bin/docker-entrypoint
+    ports:
+      - 3000:3000
+      - 4000:4000
+
+  sidekiq:
+    <<: *backend
+    command: bundle exec sidekiq -C config/sidekiq.yml
+
+  webpacker:
+    <<: *app
+    command: bin/webpack-dev-server
+    ports:
+      - 3035:3035
+    volumes:
+      - .:/app:cached
+      - ruby_bundle:/usr/local/bundle
+      - rails_cache:/app/tmp/cache
+      - node_modules:/app/node_modules
+      - packs:/app/public/packs
+    environment:
+      - RAILS_ENV=${RAILS_ENV:-development}
+      - NODE_ENV=${NODE_ENV:-development}
+      - STRIPE_PUBLIC_KEY=${STRIPE_PUBLIC_KEY:-test}
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+
+volumes:
+  db_data:
+  elastic_data:
+  ruby_bundle:
+  rails_cache:
+  node_modules:
+  packs:
