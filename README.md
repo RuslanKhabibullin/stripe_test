@@ -75,7 +75,8 @@ Now Stripe payments forwarded to local machine.
 How to run specs:
 
 ```
-docker-compose run -e RAILS_ENV=test web bin/rspec
+docker-compose up -d
+docker-compose exec -e RAILS_ENV=test web bin/rspec
 ```
 
 ## Populate Elastic index
@@ -88,6 +89,5 @@ ItemsIndex.reset!
 or using Docker:
 
 ```
-docker-compose exec web bin/rails c
-ItemsIndex.reset!
+docker-compose exec web bundle exec rake chewy:reset
 ```

@@ -34,6 +34,13 @@ services:
     image: stripe/stripe-cli
     network_mode: host
 
+  # for selenium capybara feature specs
+  chrome:
+    image: selenium/standalone-chrome-debug:3.141.59
+    ports:
+      - 4444:4444
+      - 5900:5900
+
   app: &app
     image: stripe_test:1.0.0
     stdin_open: true
@@ -58,10 +65,12 @@ services:
       - WEBPACKER_DEV_SERVER_HOST=webpacker
       - STRIPE_API_KEY=${STRIPE_API_KEY:-test}
       - STRIPE_SIGNING_SECRET=${STRIPE_SIGNING_SECRET:-test}
+      - HUB_URL=http://chrome:4444/wd/hub
     depends_on:
       - db
       - redis
       - elasticsearch
+      - chrome
     volumes:
       - .:/app:cached
       - ruby_bundle:/usr/local/bundle
@@ -74,6 +83,7 @@ services:
     command: bin/docker-entrypoint
     ports:
       - 3000:3000
+      - 4000:4000
 
   sidekiq:
     <<: *backend

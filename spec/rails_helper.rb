@@ -11,7 +11,10 @@ Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f 
 
 WebMock.disable_net_connect!(
   allow_localhost: true,
-  allow: "chromedriver.storage.googleapis.com"
+  allow: [
+    "chromedriver.storage.googleapis.com",
+    %r{http://chrome:4444/wd/hub}
+  ]
 )
 
 # include after files require
