@@ -82,8 +82,7 @@ docker-compose exec -e RAILS_ENV=test web bin/rspec
 ## Populate Elastic index
 
 ```
-bin/rails c
-ItemsIndex.reset!
+bundle exec rake chewy:reset
 ```
 
 or using Docker:
