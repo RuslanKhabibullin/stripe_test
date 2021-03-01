@@ -2,7 +2,7 @@
 # rubocop:disable RSpec/ContextWording
 shared_context "chewy indexes" do
   before(:each) do
-    if ENV["CI"].blank?
+    unless RUN_ON_CI
       ActiveRecord::Base.connection.reset_pk_sequence! :items
       ItemsIndex.purge!
     end
