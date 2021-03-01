@@ -2,8 +2,10 @@
 # rubocop:disable RSpec/ContextWording
 shared_context "chewy indexes" do
   before(:each) do
-    ActiveRecord::Base.connection.reset_pk_sequence! :items
-    ItemsIndex.purge!
+    if ENV["CI"].blank?
+      ActiveRecord::Base.connection.reset_pk_sequence! :items
+      ItemsIndex.purge!
+    end
   end
 end
 # rubocop:enable RSpec/ContextWording
