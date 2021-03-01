@@ -400,6 +400,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
     uniform_notifier (1.14.0)
+    vcr (6.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     webdrivers (4.5.0)
@@ -481,6 +482,7 @@ DEPENDENCIES
   stripe
   stripe_event
   timecop
+  vcr (~> 6.0)
   webdrivers
   webmock
   webpacker (~> 4.0)
