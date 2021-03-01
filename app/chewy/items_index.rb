@@ -1,5 +1,5 @@
 class ItemsIndex < ApplicationIndex
-  TEXT_FIELDS = %i[title description].freeze
+  TEXT_FIELDS = %i[title].freeze
 
   settings DEFAULT_SETTINGS
 

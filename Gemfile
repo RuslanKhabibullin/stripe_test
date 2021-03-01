@@ -9,6 +9,7 @@ gem "rails", "~> 6.1.2.1"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
 gem "webpacker", "~> 4.0"
 
+gem "active_model_serializers", "~> 0.10.0"
 gem "autoprefixer-rails"
 gem "chewy", "~> 7.0.0"
 gem "foundation-rails"

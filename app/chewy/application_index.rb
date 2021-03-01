@@ -1,3 +1,11 @@
+# Check how field will split phrase into tokens:
+# POST localhost:9200/stripe_test_development_items/_analyze
+# { "field": "title.edge", "text": "astartes" }
+
+# Check how analyzer will split phrase into tokens:
+# POST localhost:9200/stripe_test_development_items/_analyze
+# { "analyzer": "edge_ngram_analyzer", "text": "astartes" }
+
 class ApplicationIndex < Chewy::Index
   ORIGINAL_FIELD = {
     type: "text",

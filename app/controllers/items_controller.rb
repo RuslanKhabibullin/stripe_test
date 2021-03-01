@@ -9,4 +9,11 @@ class ItemsController < ApplicationController
 
   def show
   end
+
+  def autocomplete
+    render(
+      json: Elasticsearch::ItemsSearch.new(params[:term]).call.objects,
+      each_serializer: Autocomplete::ItemSerializer
+    )
+  end
 end
