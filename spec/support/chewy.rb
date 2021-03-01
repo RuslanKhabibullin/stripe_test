@@ -4,8 +4,10 @@ RSpec.configure do |config|
   end
 
   config.around(:each, chewy: :urgent) do |example|
-    Chewy.strategy(:urgent) do
-      example.run
+    if ENV["CI"].blank?
+      Chewy.strategy(:urgent) do
+        example.run
+      end
     end
   end
 end
