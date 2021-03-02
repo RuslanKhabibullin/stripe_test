@@ -6,13 +6,16 @@ const CHECKOUT_PATH = '/items/:id/payments'
 
 const CheckoutButton = ({ id, csrfToken }) => {
   const [buttonEnabled, setButtonEnabled] = useState(true)
+
   const handlePurchaseClick = async (_event) => {
     setButtonEnabled(!buttonEnabled)
+
     const stripe = await window.App.stripePromise
     const response = await fetch(
       CHECKOUT_PATH.replace(':id', id),
       { method: 'POST', headers: { 'X-CSRF-TOKEN': csrfToken } }
     )
+
     const session = await response.json()
     await stripe.redirectToCheckout({ sessionId: session.id })
   }

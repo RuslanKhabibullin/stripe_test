@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "items/:item_id/payments/cancel" => "items/payments#cancel", as: :item_payment_cancel
 
   resources :items, only: %i[index show] do
+    get :autocomplete, on: :collection, format: :json
+
     resources :payments, only: %i[create], module: :items
   end
 
