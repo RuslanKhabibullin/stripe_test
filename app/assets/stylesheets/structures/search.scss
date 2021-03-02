@@ -1,0 +1,24 @@
+.search-block {
+  position: relative;
+
+  .search-input {
+    min-width: 500px;
+    margin: 0;
+  }
+
+  .search-result {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 500px;
+    box-shadow: $card-shadow;
+    box-sizing: border-box;
+  }
+
+  .search-result-item {
+    padding: 10px;
+    background: $white;
+
+    p { margin: 0; }
+  }
+}
